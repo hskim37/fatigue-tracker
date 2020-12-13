@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Gaze-Based Fatigue Tracker</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A cool thing made with Glitch" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webgazer.js" defer></script>
+
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/script.js" defer></script>
+    <script src="/temp.js" defer></script>
+
+    <!-- import google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  
+  <body>
+    <!-- The loading element overlays all else until the model is loaded, at which point we remove this element from the DOM -->
+    <div class="loading" id="js-loader"><div class="loader"></div></div>
+
+    <div id="rect"></div>
+
+    <!--     project description -->
+
+    <div
+      id="description"
+    >
+      <h1 style="position: absolute; top: 30%; left: 5%; z-index: 10; width: auto;">
+        Fatigue Tracker
+      </h1>
+
+      <p  style="position: absolute; top: 50%; left: 20%; z-index: 10; width: 350px">
+        Welcome to the Fatigue Tracker for Online Reading!<br />
+        Many academic studies have found that eye movement – particularly visual
+        fixation time – is strongly correlated with fatigue levels.<br />
+        <br />
+        Specifically, research has shown that when a person's eyes are fixated
+        on specific locations for extended periods of time, it means they are
+        responding to stimulus more slowly due to fatigue. We use the the
+        WebGazer.js API, which detects your eye movement across the screen. This
+        vertical prototype demonstrates a crucial component of our larger system
+        of ubiquitous computing with tangible UI's.<br /><br />
+
+        The red dot is the approximated location of your gaze. <br />
+        To make it work, you have to calibrate this model by clicking on targets
+        that will appear after the start. <br />
+        <br /><br />
+      </p>
+    </div>
+
+    <!--     start button -->
+    <div
+      id="start_trigger"
+      style="position: absolute; bottom: 10%; left: 20%; z-index: 10;"
+    >
+      <button id="start" value="0" onclick="buttonOperations(this)">
+        start
+      </button>
+    </div>
+
+    <!-- instructions for calibration -->
+
+    <div
+      id="tip"
+      style="position: absolute; top: 10%; left: 40%; z-index: 10; width: 350px;"
+    >
+      <h3>
+        How to calibrate
+      </h3>
+
+      <ol>
+        <li>
+          Center your face in the red square. It will become green if your face is
+          detected.
+        </li>
+        <li>
+          Focus your eyes on a target and click 7 times until it disappears. Repeat this
+          action until all targets are gone.
+        </li>
+      </ol>
+    </div>
+
+    <div id="button_container">
+      <button
+        style="position: absolute; top: 3%; left: 5%; z-index: 9;"
+        value="0"
+        onclick="coll(this)"
+      >
+        click
+      </button>
+      <button
+        style="position: absolute; top: 40%; left: 5%; z-index: 9;"
+        value="0"
+        onclick="coll(this)"
+      >
+        click
+      </button>
+      <button
+        style="position: absolute; top: 90%; left: 5%; z-index: 9;"
+        value="0"
+        onclick="coll(this)"
+      >
+        click
+      </button>
+
+      <button
+        style="position: absolute; top: 3%; left: 90%; z-index: 9;"
+        value="0"
+        onclick="coll(this)"
+      >
+        click
+      </button>
+      <button
+        style="position: absolute; top: 40%; left: 90%; z-index: 9;"
+        value="0"
+        onclick="coll(this)"
+      >
+        click
+      </button>
+      <button
+        style="position: absolute; top: 90%; left: 90%; z-index: 9;"
+        value="0"
+        onclick="coll(this)"
+      >
+        click
+      </button>
+
+      <button
+        style="position: absolute; top: 90%; left: 60%; z-index: 9;"
+        value="0"
+        onclick="coll(this)"
+      >
+        click
+      </button>
+      <button
+        style="position: absolute; top: 90%; left: 30%; z-index: 9;"
+        value="0"
+        onclick="coll(this)"
+      >
+        click
+      </button>
+      <button
+        style="position: absolute; top: 3%; left: 60%; z-index: 9;"
+        value="0"
+        onclick="coll(this)"
+      >
+        click
+      </button>
+      <button
+        style="position: absolute; top: 3%; left: 30%; z-index: 9;"
+        value="0"
+        onclick="coll(this)"
+      >
+        click
+      </button>
+
+      <button
+        style="position: absolute; top: 40%; left: 48%; z-index: 9;"
+        value="0"
+        onclick="coll(this)"
+      >
+        click
+      </button>
+    </div>
+
+    <div id="time-display" style="position: absolute; top: 90%; right: 10%;">
+      0:00
+    </div>
+
+    <iframe
+      id="viewer"
+      src="https://cdn.glitch.com/f81c77f4-7719-4d46-97ce-dc103500cfa4%2F_ex03_assignment.pdf?v=1607000115288"
+      width="100%"
+      height="600px"
+      style="position: absolute; top: 10%;"
+    >
+    </iframe>
+
+    <script>
+      var targetCounter = 0;
+
+      function coll(element) {
+        if (element.value < 6) {
+          element.value++;
+        } else {
+          element.style.display = "none";
+          targetCounter++;
+          if (targetCounter === 11) {
+            // all targets are gone
+            document.getElementById("tip").style.display = "none";
+
+            // show doc reader
+            document.getElementById("viewer").style.display = "block";
+            // display time
+            document.getElementById("time-display").style.display = "block";
+
+            setInterval(updateGA, 500);
+            setInterval(findArea, 500);
+            setInterval(showResult, 500);
+            setInterval(displayTime, 60000);
+          }
+        }
+      }
+    </script>
+
+  </body>
+</html>

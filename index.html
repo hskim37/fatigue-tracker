@@ -188,7 +188,8 @@
 
     <script>
       var targetCounter = 0;
-
+      
+      //delete targets
       function coll(element) {
         if (element.value < 6) {
           element.value++;
@@ -196,14 +197,15 @@
           element.style.display = "none";
           targetCounter++;
           if (targetCounter === 11) {
-            // all targets are gone
+            // hide instructions
             document.getElementById("tip").style.display = "none";
 
             // show doc reader
             document.getElementById("viewer").style.display = "block";
             // display time
             document.getElementById("time-display").style.display = "block";
-
+            
+            // calculate gaze area and update tracker
             setInterval(updateGA, 500);
             setInterval(findArea, 500);
             setInterval(showResult, 500);

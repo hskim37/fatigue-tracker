@@ -1,7 +1,7 @@
 # Fatigue Tracker
 
-made with webgazer.js
+Made with webgazer.js
 
-## documentation
+## Documentation
 
-read full documentation [here](https://docs.google.com/document/d/e/2PACX-1vQLjq6mgWhzseL07HwzuekhfRlidJKYdffeM2nZCsacMYurJn3qaFKwgTFooHTyVEtrMPpD8zu343tf/pub)
+Read full documentation [here](https://docs.google.com/document/d/e/2PACX-1vQLjq6mgWhzseL07HwzuekhfRlidJKYdffeM2nZCsacMYurJn3qaFKwgTFooHTyVEtrMPpD8zu343tf/pub)

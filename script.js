@@ -28,6 +28,7 @@ function buttonOperations(button) {
     .begin();
 }
 
+// update gaze-area array with new position data
 function updateGA() {
   while (gazeArea.length > 10) {
     gazeArea.shift();
@@ -35,6 +36,7 @@ function updateGA() {
   console.log("update GA")
 }
 
+// calculate the maximum gaze area
 function findArea() {
   // separate gazeArea into arrays of xs and ys
   var xs = gazeArea.map(x => x[0]);
@@ -56,21 +58,23 @@ function findArea() {
   console.log("area" + area);
 }
 
+// compare maximum area to threshold
 function showResult() {
     if (area <= 400000) {
     stressCounter++;
-    console.log("show result");
     changeBg();
   }
 }
 
+// increment opacity of background
 function changeBg() {
   var colorStr = "rgba(255,0,0," + stressCounter * 0.001 + ")";
-  console.log(colorStr);
-  console.log("stressCounter: " + stressCounter);
+//   console.log(colorStr);
+//   console.log("stressCounter: " + stressCounter);
   $("body").css("background-color", colorStr);
 }
 
+// display total reading time
 function displayTime() {
   var timeDisplay = document.getElementById("time-display");
   var timeArray = timeDisplay.innerHTML.split(":");

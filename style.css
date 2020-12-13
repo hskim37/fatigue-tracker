@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  background-color: rgba(255, 200, 230, 0.01);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color:#1f1f1f;
+}
+
+h1 {
+  display: block;
+  font-size: 7em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #1f1f1f;
+}
+
+
+#viewer {
+  display: none;
+}
+
+#time-display {
+  display: none;
+}
+
+#tip{
+  display: none;
+}
+
+#button_container button {
+  background-image: url('https://cdn.glitch.com/fb7b6eb7-99ea-42aa-9c0e-e028b71fe12a%2Ftarget.png?v=1606464359503');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+    color:#1f1f1f;
+}
+
+#button_container {
+  display: none;
+}
+
+#rect {
+  background-image: url('https://cdn.glitch.com/fb7b6eb7-99ea-42aa-9c0e-e028b71fe12a%2Fred_dot.png?v=1606464260827');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  position: absolute; 
+  width: 10px; 
+  height: 10px; 
+  z-index: 9;
+}
+
+#logo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 200px;
+  width: auto;
+}
+
+#start {
+  background-color: transparent;
+  
+  outline: none;
+  border: none;
+  cursor: pointer;
+  
+  color: #f22222;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}

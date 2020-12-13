@@ -1,19 +1,22 @@
 // Set our main variables
 
+// coordinates of eye-gaze
+var xPosition = 0;
+var yPosition = 0;
 
-var xPosition = 0; // x-coordinate of gaze location
-var yPosition = 0; //y-coordinate of gaze location
-var gazeArea = []; // array to store eye-gaze coordinates
+var x = [];
+var gazeArea = []; // array for eye-gaze coordinates
 var area; // area of eye-gaze
 var stressCounter = 0; // focus tracker
 
 function buttonOperations(button) {
+  // function that is triggered when the 'start' button is clicked on
   document.getElementById("start").style.display = "none";
   document.getElementById("button_container").style.display = "block";
   document.getElementById("description").style.display = "none";
   document.getElementById("tip").style.display = "block";
   webgazer
-    .setGazeListener(function(data, elapsedTime) {
+    .setGazeListener(function(data, elapsedTime) { // initiate webgazer
       if (data == null) {
         return;
       }
@@ -59,6 +62,7 @@ function findArea() {
 }
 
 // compare maximum area to threshold
+// increment and visualize counter
 function showResult() {
     if (area <= 400000) {
     stressCounter++;

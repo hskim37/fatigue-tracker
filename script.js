@@ -4,7 +4,6 @@
 var xPosition = 0;
 var yPosition = 0;
 
-var x = [];
 var gazeArea = []; // array for eye-gaze coordinates
 var area; // area of eye-gaze
 var stressCounter = 0; // focus tracker

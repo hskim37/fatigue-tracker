@@ -30,7 +30,7 @@
 
     <div id="rect"></div>
 
-    <!--     project description -->
+    <!-- Project Description -->
 
     <div
       id="description"
@@ -58,7 +58,8 @@
       </p>
     </div>
 
-    <!--     start button -->
+    <!-- Start Button -->
+    
     <div
       id="start_trigger"
       style="position: absolute; bottom: 10%; left: 20%; z-index: 10;"
@@ -68,7 +69,7 @@
       </button>
     </div>
 
-    <!-- instructions for calibration -->
+    <!-- Instructions for Calibration -->
 
     <div
       id="tip"
@@ -90,6 +91,9 @@
       </ol>
     </div>
 
+
+    <!-- Target buttons for calibration -->
+    
     <div id="button_container">
       <button
         style="position: absolute; top: 3%; left: 5%; z-index: 9;"
@@ -173,10 +177,14 @@
       </button>
     </div>
 
+    <!-- Time Display -->
+    
     <div id="time-display" style="position: absolute; top: 90%; right: 10%;">
       0:00
     </div>
 
+    <!-- iframe for document reading -->
+    
     <iframe
       id="viewer"
       src="assets/example_document.pdf"
@@ -196,7 +204,7 @@
         } else {
           element.style.display = "none";
           targetCounter++;
-          if (targetCounter === 11) {
+          if (targetCounter === 11) { // After all the targets have been clicked on and calibration is over
             // hide instructions
             document.getElementById("tip").style.display = "none";
 

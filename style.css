@@ -31,7 +31,7 @@ h1 {
 }
 
 #button_container button {
-  background-image: url('https://cdn.glitch.com/fb7b6eb7-99ea-42aa-9c0e-e028b71fe12a%2Ftarget.png?v=1606464359503');
+  background-image: url('assets/target.png');
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;

@@ -51,7 +51,7 @@ h1 {
 }
 
 #rect {
-  background-image: url('https://cdn.glitch.com/fb7b6eb7-99ea-42aa-9c0e-e028b71fe12a%2Fred_dot.png?v=1606464260827');
+  background-image: url('assets/red_dot.png');
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
